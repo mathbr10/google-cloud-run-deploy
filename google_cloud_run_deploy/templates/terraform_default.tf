@@ -12,6 +12,7 @@ terraform {
 provider "google" {
   project = var.project_id
   region  = var.region
+  credentials = var.gcp_credentials_path
 }
 
 ################################################################################
@@ -78,6 +79,17 @@ variable "cpu" {
   description = "CPU cores for each instance"
   type        = number
   default     = 1
+}
+
+variable "service_account_email" {
+  description = "Service account email"
+  type        = string
+}
+
+variable "gcp_credentials_path" {
+  type = string
+  sensitive = true
+  description = "Google Cloud service account credentials"
 }
 
 ################################################################################

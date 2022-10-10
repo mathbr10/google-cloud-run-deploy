@@ -37,12 +37,17 @@ OPERATOR_SCHEMA = {
         "default": "512M",
         "help_message": "RAM for each available instance. Note: if your bento exceeds this amount, GCP will terminate the container instance. Read more https://cloud.google.com/run/docs/configuring/memory-limits [Memory Suffixes: T, G, M, k]",
     },
-    "cpu": {
+    "service_account_email": {
         "required": True,
-        "type": "integer",
-        "coerce": int,
-        "default": 1,
-        "help_message": "CPU cores for each available instance. Note: container instances only get CPU during request processing and startup. Read more https://cloud.google.com/run/docs/configuring/cpu-allocation",
+        "type": "string",
+        "coerce": str,
+        "help_message": "The service account email to be used by the deployment. Read more",
+    },
+    "gcp_credentials_path": {
+        "required": True,
+        "type": "string",
+        "coerce": str,
+        "help_message": "The path to the GCP credentials file.",
     },
 }
 
